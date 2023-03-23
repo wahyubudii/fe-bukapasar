@@ -20,7 +20,7 @@ export default function Layout({ children, customMeta }: LayoutProps) {
               <div className="mx-10 sm:mx-20 lg:mx-24 xl:mx-40">{children}</div>
             </div>
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </div>

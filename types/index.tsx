@@ -1,3 +1,4 @@
+import React, { FormEvent } from "react";
 import { IconType } from "react-icons";
 
 export type LayoutProps = {
@@ -22,3 +23,27 @@ export type menuItemProps = {
   icon: IconType;
   route: string;
 };
+
+export type FormFieldProps = {
+  classname?: string;
+  type?: string;
+  placeholder?: string;
+  value?: string;
+  children?: React.ReactNode;
+  handleChange?: (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleSubmit?: (e: FormEvent<HTMLFormElement>) => void;
+  iconButton?: IconType | any;
+};
+
+export type FooterItemProps = {
+  title: string;
+  route: string;
+};
+
+export type SocialMediaProps = {
+  title: string;
+  route: string;
+  icon: IconType;
+};
+
+export type ContactItemProps = string[]
