@@ -124,7 +124,7 @@ export default function Footer() {
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               value={email}
-              children={"Subscribe"}
+              nameButton={"Subscribe"}
             />
           </div>
         </div>

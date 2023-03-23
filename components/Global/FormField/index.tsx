@@ -9,7 +9,7 @@ export default function FormField({
   value,
   handleChange,
   handleSubmit,
-  children,
+  nameButton,
   iconButton,
 }: FormFieldProps) {
   return (
@@ -31,7 +31,7 @@ export default function FormField({
             {iconButton ? (
               <div className="h-5 w-full text-xl">{iconButton}</div>
             ) : (
-              <div className="h-5 w-full text-sm">{children}</div>
+              <div className="h-5 w-full text-sm">{nameButton}</div>
             )}
           </button>
         </div>

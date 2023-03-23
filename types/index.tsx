@@ -29,7 +29,7 @@ export type FormFieldProps = {
   type?: string;
   placeholder?: string;
   value?: string;
-  children?: React.ReactNode;
+  nameButton?: string;
   handleChange?: (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleSubmit?: (e: FormEvent<HTMLFormElement>) => void;
   iconButton?: IconType | any;
@@ -46,4 +46,4 @@ export type SocialMediaProps = {
   icon: IconType;
 };
 
-export type ContactItemProps = string[]
+export type ContactItemProps = string[];
