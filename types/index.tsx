@@ -7,10 +7,10 @@ export type LayoutProps = {
 };
 
 export type MetaProps = {
-  title: string;
-  description: string;
-  favicon: string;
-  type: string;
+  title?: string;
+  description?: string;
+  favicon?: string;
+  type?: string;
 };
 
 export type routeProps = {
@@ -47,3 +47,21 @@ export type SocialMediaProps = {
 };
 
 export type ContactItemProps = string[];
+
+export type BannerProps = {
+  header: string;
+  title: string;
+  url: string;
+};
+
+export type ServiceItemProps = {
+  title: string;
+  subTitle: string;
+  image: string;
+};
+
+export type CategoryItemProps = {
+  title: string;
+  items: number;
+  image: string;
+};

@@ -53,10 +53,10 @@ const routePage: routeProps[] = [
   },
 ];
 
-const links = [
-  { href: "/", label: "Account settings" },
-  { href: "/", label: "Support" },
-  { href: "/", label: "License" },
+const links: routeProps[] = [
+  { route: "/", name: "Account settings" },
+  { route: "/", name: "Support" },
+  { route: "/", name: "License" },
 ];
 
 export default function Header() {
@@ -101,7 +101,7 @@ export default function Header() {
               iconButton={<BiSearch />}
             />
             <div className="grid grid-cols-4 gap-5 col-span-2 pl-12">
-              {menuItem.map((item: any, index: number) => {
+              {menuItem.map((item: menuItemProps, index: number) => {
                 return (
                   <Link
                     key={index}
@@ -141,19 +141,19 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute mt-3 w-56 origin-top-right rounded-b-lg w-full bg-gray-800">
+                <Menu.Items className="absolute mt-3 w-56 origin-top-right rounded-b-lg w-full bg-gray-800 z-10">
                   <div className="divide-y divide-gray-600">
-                    {links.map((item: any, index: number) => {
+                    {links.map((item: routeProps, index: number) => {
                       return (
                         <Menu.Item key={index}>
                           {({ active }) => (
                             <Link
-                              href={item.href}
+                              href={item.route}
                               className={`${
                                 active ? "bg-black text-white" : "text-white"
                               } group flex w-full items-center rounded-md p-4 text-sm`}
                             >
-                              {item.label}
+                              {item.name}
                             </Link>
                           )}
                         </Menu.Item>
@@ -164,7 +164,7 @@ export default function Header() {
               </Transition>
             </Menu>
             <div className="uppercase flex items-center mx-5 w-4/5">
-              {routePage.map((item: any, index: number) => {
+              {routePage.map((item: routeProps, index: number) => {
                 return (
                   <Link key={index} href={item.route} className="px-5">
                     {item.name}

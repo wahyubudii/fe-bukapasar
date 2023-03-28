@@ -142,7 +142,7 @@ export default function Footer() {
                 <p>{contactItem[2]}</p>
                 <p>{contactItem[3]}</p>
                 <div className="flex items-center space-x-4">
-                  {socialMedia.map((item: any, index: number) => {
+                  {socialMedia.map((item: SocialMediaProps, index: number) => {
                     return (
                       <Link
                         key={index}
@@ -159,7 +159,7 @@ export default function Footer() {
             <div>
               <h2 className="text-2xl font-semibold pb-3">Information</h2>
               <div className="flex flex-col space-y-3">
-                {informationItem.map((item: any, index: number) => {
+                {informationItem.map((item: FooterItemProps, index: number) => {
                   return (
                     <Link href={item.route} key={index}>
                       {item.title}
@@ -171,7 +171,7 @@ export default function Footer() {
             <div>
               <h2 className="text-2xl font-semibold pb-3">Account</h2>
               <div className="flex flex-col space-y-3">
-                {accountItem.map((item: any, index: number) => {
+                {accountItem.map((item: FooterItemProps, index: number) => {
                   return (
                     <Link href={item.route} key={index}>
                       {item.title}
@@ -183,7 +183,7 @@ export default function Footer() {
             <div>
               <h2 className="text-2xl font-semibold pb-3">Quick Link</h2>
               <div className="flex flex-col space-y-3">
-                {quickLink.map((item: any, index: number) => {
+                {quickLink.map((item: FooterItemProps, index: number) => {
                   return (
                     <Link href={item.route} key={index}>
                       {item.title}
