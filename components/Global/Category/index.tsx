@@ -87,7 +87,7 @@ export default function Category() {
 
   return (
     <div>
-      <div className="flex items-center justify-center gap-14">
+      <div className="flex items-center justify-between gap-14">
         {serviceItem.map((item: ServiceItemProps, index: number) => {
           return (
             <div key={index} className="flex items-center justify-center gap-6">

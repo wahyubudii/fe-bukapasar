@@ -53,6 +53,7 @@ export default function Carousel() {
           width={2000}
           draggable={false}
           className="w-full h-full rounded-xl bg-center bg-cover object-cover"
+          priority={true}
         />
       </div>
       <div className="absolute top-20 left-14">

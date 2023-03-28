@@ -65,3 +65,9 @@ export type CategoryItemProps = {
   items: number;
   image: string;
 };
+
+export type BrandItemsProps = {
+  title: string;
+  image: string;
+  route: string;
+};

@@ -1,11 +1,10 @@
-import { CategoryItemProps, MetaProps, ServiceItemProps } from "@/types";
+import { MetaProps } from "@/types";
 import Logo from "@/public/next.svg";
 import Layout from "@/components/Global/Layout";
 import Carousel from "@/components/Global/Carousel";
 import CardBanner from "@/components/Global/CardBanner";
-import Image from "next/image";
-import Link from "next/link";
 import Category from "@/components/Global/Category";
+import Marque from "@/components/Global/Marque";
 
 export default function Home() {
   const meta: MetaProps = {
@@ -27,6 +26,11 @@ export default function Home() {
           <div className="py-12">
             <Category />
           </div>
+        </div>
+      </div>
+      <div className="container mx-auto">
+        <div className="py-12">
+          <Marque />
         </div>
       </div>
     </Layout>
