@@ -2,8 +2,8 @@ import { BannerProps } from "@/types";
 import Image from "next/image";
 import React from "react";
 
-export default function CardBanner() {
-  const cardBanner: BannerProps[] = [
+export default function Banner() {
+  const bannerItem: BannerProps[] = [
     {
       header: "New Arrival",
       title: "iPad S13+ Pro.",
@@ -29,7 +29,7 @@ export default function CardBanner() {
 
   return (
     <div className="grid grid-cols-2 gap-5">
-      {cardBanner.map((item: BannerProps, index: number) => {
+      {bannerItem.map((item: BannerProps, index: number) => {
         return (
           <div key={index} className="relative rounded-xl">
             <Image

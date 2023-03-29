@@ -7,7 +7,7 @@ import {
   AiFillGithub,
   AiFillYoutube,
 } from "react-icons/ai";
-import FormField from "../FormField";
+import FormField from "../Global/FormField";
 import { ContactItemProps, FooterItemProps, SocialMediaProps } from "@/types";
 
 const contactItem: ContactItemProps = [

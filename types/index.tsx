@@ -20,7 +20,7 @@ export type routeProps = {
 
 export type menuItemProps = {
   name: string;
-  icon: IconType;
+  icon: IconType | any;
   route: string;
 };
 
@@ -70,4 +70,17 @@ export type BrandItemsProps = {
   title: string;
   image: string;
   route: string;
+};
+
+export type CardProps = {
+  route: string;
+  imageLink: string;
+  brand?: string;
+  time?: string;
+  title: string;
+  description?: string;
+  rating?: number;
+  isLiked?: boolean;
+  price?: number | any;
+  discount?: number;
 };

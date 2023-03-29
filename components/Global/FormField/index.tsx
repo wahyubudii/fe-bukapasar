@@ -1,6 +1,5 @@
 import { FormFieldProps } from "@/types";
 import React from "react";
-import { BiSearch } from "react-icons/bi";
 
 export default function FormField({
   classname,

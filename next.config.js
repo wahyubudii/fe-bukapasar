@@ -11,6 +11,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        destination: "https://be-homeivas.vercel.app/api/:path*",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

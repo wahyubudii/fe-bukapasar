@@ -39,7 +39,7 @@ export default function Carousel() {
     setCurrentIndex(newIndex);
   };
 
-  const goToSlide = (slideIndex: any) => {
+  const goToSlide = (slideIndex: number) => {
     setCurrentIndex(slideIndex);
   };
 

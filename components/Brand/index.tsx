@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
-export default function Marque() {
+export default function Brand() {
   const branditems: BrandItemsProps[] = [
     {
       title: "apple-logo",

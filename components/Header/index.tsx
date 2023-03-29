@@ -9,7 +9,7 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { menuItemProps, routeProps } from "@/types";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import FormField from "../FormField";
+import FormField from "../Global/FormField";
 
 const menuItem: menuItemProps[] = [
   {
@@ -41,15 +41,15 @@ const routePage: routeProps[] = [
   },
   {
     name: "Our Store",
-    route: "/",
+    route: "/product",
   },
   {
     name: "Blogs",
-    route: "/",
+    route: "/blog",
   },
   {
     name: "Contacts",
-    route: "/",
+    route: "/contact",
   },
 ];
 
