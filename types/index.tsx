@@ -82,5 +82,5 @@ export type CardProps = {
   rating?: number;
   isLiked?: boolean;
   price?: number | any;
-  discount?: number;
+  discount?: number | any;
 };

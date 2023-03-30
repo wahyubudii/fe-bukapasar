@@ -45,17 +45,15 @@ export default function Carousel() {
 
   return (
     <div className="w-full h-[550px] m-auto relative group">
-      <div className="w-full h-full">
-        <Image
-          src={carouselItem[currentIndex].url}
-          alt="gambar"
-          height={2000}
-          width={2000}
-          draggable={false}
-          className="w-full h-full rounded-xl bg-center bg-cover object-cover"
-          priority={true}
-        />
-      </div>
+      <Image
+        src={carouselItem[currentIndex].url}
+        alt="gambar"
+        height={2000}
+        width={2000}
+        draggable={false}
+        className="w-full h-full rounded-xl bg-center bg-cover object-cover duration-500"
+        priority={true}
+      />
       <div className="absolute top-20 left-14">
         <h3 className="text-red-800 font-medium uppercase">
           {carouselItem[currentIndex].header}

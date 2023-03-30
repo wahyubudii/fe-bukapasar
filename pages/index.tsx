@@ -7,6 +7,7 @@ import Brand from "@/components/Brand";
 import Banner from "@/components/Banner";
 import Blog from "@/components/Blog";
 import Collection from "@/components/Collection";
+import SpecialProduct from "@/components/SpecialProduct";
 
 export default function Home() {
   const meta: MetaProps = {
@@ -36,8 +37,9 @@ export default function Home() {
         </div>
       </div>
       <div className="container mx-auto">
-        <div className="py-12">
+        <div className="py-12 space-y-5">
           <Collection />
+          <SpecialProduct />
         </div>
       </div>
       <div className="container mx-auto">

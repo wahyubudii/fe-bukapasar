@@ -183,7 +183,7 @@ export default function Collection() {
                   className="w-4 h-4"
                 />
               </button>
-              <div className="absolute top-12 -right-16 group-hover:right-4 group-hover:duration-500 flex flex-col space-y-2">
+              <div className="absolute top-12 -right-16 group-hover:right-4 group-hover:duration-300 flex flex-col space-y-2">
                 {productAction.map((item: menuItemProps, index: number) => {
                   return (
                     <Link
