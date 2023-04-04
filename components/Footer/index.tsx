@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import React, { FormEvent, useState } from "react";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import {
@@ -8,7 +9,7 @@ import {
   AiFillYoutube,
 } from "react-icons/ai";
 import FormField from "../Global/FormField";
-import { ContactItemProps, FooterItemProps, SocialMediaProps } from "@/types";
+import { ContactItemProps, RouteProps, MenuItemProps } from "@/types";
 
 const contactItem: ContactItemProps = [
   "Malang",
@@ -17,88 +18,88 @@ const contactItem: ContactItemProps = [
   "wahyu.budi.w.b33@gmail.com",
 ];
 
-const socialMedia: SocialMediaProps[] = [
+const socialMedia: MenuItemProps[] = [
   {
-    title: "linkedin",
+    name: "linkedin",
     route: "https://www.linkedin.com/in/wahyubudiutomo/",
     icon: AiFillLinkedin,
   },
   {
-    title: "instagram",
+    name: "instagram",
     route: "/",
     icon: AiFillInstagram,
   },
   {
-    title: "github",
+    name: "github",
     route: "https://github.com/wahyubudii",
     icon: AiFillGithub,
   },
   {
-    title: "youtube",
+    name: "youtube",
     route: "/",
     icon: AiFillYoutube,
   },
 ];
 
-const informationItem: FooterItemProps[] = [
+const informationItem: RouteProps[] = [
   {
-    title: "Privacy Policy",
+    name: "Privacy Policy",
     route: "/",
   },
   {
-    title: "Refund Policy",
+    name: "Refund Policy",
     route: "/",
   },
   {
-    title: "Shipping Policy",
+    name: "Shipping Policy",
     route: "/",
   },
   {
-    title: "Terms & Conditions",
+    name: "Terms & Conditions",
     route: "/",
   },
   {
-    title: "Blogs",
-    route: "/",
-  },
-];
-
-const accountItem: FooterItemProps[] = [
-  {
-    title: "About us",
-    route: "/",
-  },
-  {
-    title: "Faq",
-    route: "/",
-  },
-  {
-    title: "Contact",
+    name: "Blogs",
     route: "/",
   },
 ];
 
-const quickLink: FooterItemProps[] = [
+const accountItem: RouteProps[] = [
   {
-    title: "Laptops",
+    name: "About us",
     route: "/",
   },
   {
-    title: "Headphones",
+    name: "Faq",
     route: "/",
   },
   {
-    title: "Tablets",
+    name: "Contact",
+    route: "/",
+  },
+];
+
+const quickLink: RouteProps[] = [
+  {
+    name: "Laptops",
     route: "/",
   },
   {
-    title: "Watchs",
+    name: "Headphones",
+    route: "/",
+  },
+  {
+    name: "Tablets",
+    route: "/",
+  },
+  {
+    name: "Watchs",
     route: "/",
   },
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const handleChange = (
     e: FormEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -114,8 +115,8 @@ export default function Footer() {
       <footer className="py-3 bg-black text-white">
         <div className="container mx-auto">
           <div className="h-20 grid grid-cols-2 items-center">
-            <div className="flex items-center text-2xl space-x-4">
-              <IoPaperPlaneOutline />
+            <div className="flex items-center text-xl space-x-4">
+              <IoPaperPlaneOutline className="w-6 h-6" />
               <p className="font-semibold">Sign Up For Newsletter</p>
             </div>
             <FormField
@@ -142,7 +143,7 @@ export default function Footer() {
                 <p>{contactItem[2]}</p>
                 <p>{contactItem[3]}</p>
                 <div className="flex items-center space-x-4">
-                  {socialMedia.map((item: SocialMediaProps, index: number) => {
+                  {socialMedia.map((item: MenuItemProps, index: number) => {
                     return (
                       <Link
                         key={index}
@@ -159,10 +160,10 @@ export default function Footer() {
             <div>
               <h2 className="text-2xl font-semibold pb-3">Information</h2>
               <div className="flex flex-col space-y-3">
-                {informationItem.map((item: FooterItemProps, index: number) => {
+                {informationItem.map((item: RouteProps, index: number) => {
                   return (
                     <Link href={item.route} key={index}>
-                      {item.title}
+                      {item.name}
                     </Link>
                   );
                 })}
@@ -171,10 +172,10 @@ export default function Footer() {
             <div>
               <h2 className="text-2xl font-semibold pb-3">Account</h2>
               <div className="flex flex-col space-y-3">
-                {accountItem.map((item: FooterItemProps, index: number) => {
+                {accountItem.map((item: RouteProps, index: number) => {
                   return (
                     <Link href={item.route} key={index}>
-                      {item.title}
+                      {item.name}
                     </Link>
                   );
                 })}
@@ -183,10 +184,10 @@ export default function Footer() {
             <div>
               <h2 className="text-2xl font-semibold pb-3">Quick Link</h2>
               <div className="flex flex-col space-y-3">
-                {quickLink.map((item: FooterItemProps, index: number) => {
+                {quickLink.map((item: RouteProps, index: number) => {
                   return (
                     <Link href={item.route} key={index}>
-                      {item.title}
+                      {item.name}
                     </Link>
                   );
                 })}

@@ -1,4 +1,4 @@
-import { CardProps, menuItemProps } from "@/types";
+import { CardProps, MenuItemProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import ReactStars from "react-stars";
@@ -69,7 +69,7 @@ export default function Collection() {
     },
   ];
 
-  const productAction: menuItemProps[] = [
+  const productAction: MenuItemProps[] = [
     {
       route: "/",
       icon: CompareIcon.src,
@@ -113,7 +113,7 @@ export default function Collection() {
                 height={2000}
                 width={2000}
                 draggable={false}
-                className="p-10 w-full h-60 bg-cover bg-center object-contain rounded-t-lg"
+                className="p-12 w-full h-60 bg-cover bg-center object-contain rounded-t-lg"
               />
               <div className="pb-6 px-6">
                 <p className="text-[11px] text-gray-600 font-medium bg-gray-200 w-fit px-3 py-1 rounded-full">
@@ -184,7 +184,7 @@ export default function Collection() {
                 />
               </button>
               <div className="absolute top-12 -right-16 group-hover:right-4 group-hover:duration-300 flex flex-col space-y-2">
-                {productAction.map((item: menuItemProps, index: number) => {
+                {productAction.map((item: MenuItemProps, index: number) => {
                   return (
                     <Link
                       key={index}

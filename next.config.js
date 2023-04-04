@@ -9,12 +9,20 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
     ],
   },
   async rewrites() {
     return [
       {
-        source: "/:path*",
+        source: "/api/v1/:path*",
         destination: "https://be-homeivas.vercel.app/api/:path*",
       },
     ];

@@ -1,17 +1,19 @@
 import Link from "next/link";
 import React, { FormEvent, useState } from "react";
+import Image from "next/image";
 import { BiSearch } from "react-icons/bi";
 import { SlHeart } from "react-icons/sl";
 import { HiArrowPath } from "react-icons/hi2";
 import { BsPerson, BsGrid } from "react-icons/bs";
 import { GiShoppingCart } from "react-icons/gi";
 import { TiArrowSortedDown } from "react-icons/ti";
-import { menuItemProps, routeProps } from "@/types";
+import { MenuItemProps, RouteProps } from "@/types";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import FormField from "../Global/FormField";
+import ShopCategory from "@/public/images/menu.svg";
 
-const menuItem: menuItemProps[] = [
+const menuItem: MenuItemProps[] = [
   {
     name: "Compare Products",
     icon: HiArrowPath,
@@ -34,7 +36,7 @@ const menuItem: menuItemProps[] = [
   },
 ];
 
-const routePage: routeProps[] = [
+const routePage: RouteProps[] = [
   {
     name: "Home",
     route: "/",
@@ -53,14 +55,14 @@ const routePage: routeProps[] = [
   },
 ];
 
-const links: routeProps[] = [
+const links: RouteProps[] = [
   { route: "/", name: "Account settings" },
   { route: "/", name: "Support" },
   { route: "/", name: "License" },
 ];
 
 export default function Header() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const handleChange = (
     e: FormEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -73,18 +75,6 @@ export default function Header() {
 
   return (
     <div className="divide-y divide-gray-600">
-      <div className="py-3 bg-black text-white">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 justify-between">
-            <p>Free Shipping Over 1.000.000 IDR & Free Returns</p>
-            <div>
-              <p className="text-right">
-                Hotline: <Link href="telp:+6285856196359">+6285856196359</Link>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="py-5 bg-black text-white">
         <div className="container mx-auto">
           <div className="grid grid-cols-5">
@@ -101,7 +91,7 @@ export default function Header() {
               iconButton={<BiSearch />}
             />
             <div className="grid grid-cols-4 gap-5 col-span-2 pl-12">
-              {menuItem.map((item: menuItemProps, index: number) => {
+              {menuItem.map((item: MenuItemProps, index: number) => {
                 return (
                   <Link
                     key={index}
@@ -125,10 +115,15 @@ export default function Header() {
             <Menu as="div" className="relative w-1/5">
               <Menu.Button className="flex items-center justify-between w-full">
                 <div className="flex items-center space-x-3">
-                  <div className="text-xl">
-                    <BsGrid />
-                  </div>
-                  <p>Shop Categories</p>
+                  <Image
+                    src={ShopCategory.src}
+                    alt="menu-icon"
+                    width={1200}
+                    height={1200}
+                    draggable={false}
+                    className="w-5 h-5 bg-cover bg-center object-cover"
+                  />
+                  <p className="text-sm">Shop Categories</p>
                 </div>
                 <TiArrowSortedDown />
               </Menu.Button>
@@ -141,9 +136,9 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute mt-3 w-56 origin-top-right rounded-b-lg w-full bg-gray-800 z-10">
+                <Menu.Items className="absolute mt-3 origin-top-right rounded-b-lg w-full bg-gray-800 z-10">
                   <div className="divide-y divide-gray-600">
-                    {links.map((item: routeProps, index: number) => {
+                    {links.map((item: RouteProps, index: number) => {
                       return (
                         <Menu.Item key={index}>
                           {({ active }) => (
@@ -164,9 +159,9 @@ export default function Header() {
               </Transition>
             </Menu>
             <div className="uppercase flex items-center mx-5 w-4/5">
-              {routePage.map((item: routeProps, index: number) => {
+              {routePage.map((item: RouteProps, index: number) => {
                 return (
-                  <Link key={index} href={item.route} className="px-5">
+                  <Link key={index} href={item.route} className="px-5 text-sm">
                     {item.name}
                   </Link>
                 );

@@ -8,10 +8,11 @@ import Banner from "@/components/Banner";
 import Blog from "@/components/Blog";
 import Collection from "@/components/Collection";
 import SpecialProduct from "@/components/SpecialProduct";
+import PopularProduct from "@/components/Products/PopularProduct";
 
 export default function Home() {
   const meta: MetaProps = {
-    title: "Buka Pasar | Homepage",
+    title: "Buka Pasar",
     favicon: `${Logo.src}`,
     type: "website",
   };
@@ -40,6 +41,11 @@ export default function Home() {
         <div className="py-12 space-y-5">
           <Collection />
           <SpecialProduct />
+        </div>
+      </div>
+      <div className="container mx-auto">
+        <div className="py-12 space-y-5">
+          <PopularProduct />
         </div>
       </div>
       <div className="container mx-auto">

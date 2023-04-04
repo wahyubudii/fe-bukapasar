@@ -114,7 +114,7 @@ export default function Category() {
               <Link
                 key={index}
                 href={"/"}
-                className="flex border-r border-b items-center justify-center py-8 px-8 gap-3 group"
+                className="flex border-r border-b first items-center justify-center py-8 px-8 gap-3 group"
               >
                 <div className="space-y-1">
                   <p className="font-medium group-hover:underline">

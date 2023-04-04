@@ -5,14 +5,14 @@ import HeartFillIcon from "@/public/images/wish-black.svg";
 import ReactStars from "react-stars";
 import Link from "next/link";
 import { NumericFormat } from "react-number-format";
-import { CardProps, menuItemProps } from "@/types";
+import { CardProps, MenuItemProps } from "@/types";
 import DateTimeDisplay from "../Global/DateTimeDisplay";
 import ViewIcon from "@/public/images/view.svg";
 import CompareIcon from "@/public/images/prodcompare.svg";
 import CartIcon from "@/public/images/add-cart.svg";
 
 export default function SpecialProduct() {
-  const productAction: menuItemProps[] = [
+  const productAction: MenuItemProps[] = [
     {
       route: "/",
       icon: CompareIcon.src,
@@ -73,7 +73,7 @@ export default function SpecialProduct() {
                 height={2000}
                 width={2000}
                 draggable={false}
-                className="bg-white rounded w-full h-60 p-8 bg-cover bg-center object-contain"
+                className="p-10 bg-white rounded w-full h-60 bg-cover bg-center object-contain"
               />
               <div className="flex items-center justify-between gap-5">
                 <Image
@@ -111,7 +111,7 @@ export default function SpecialProduct() {
                 />
               </button>
               <div className="absolute top-8 -right-16 group-hover:right-0 group-hover:duration-300 flex flex-col space-y-2">
-                {productAction.map((item: menuItemProps, index: number) => {
+                {productAction.map((item: MenuItemProps, index: number) => {
                   return (
                     <Link
                       key={index}
