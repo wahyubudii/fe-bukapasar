@@ -10,8 +10,9 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { MenuItemProps, RouteProps } from "@/types";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import FormField from "../Global/FormField";
+import FormField from "../Global/FormFieldButton";
 import ShopCategory from "@/public/images/menu.svg";
+import FormFieldButton from "../Global/FormFieldButton";
 
 const menuItem: MenuItemProps[] = [
   {
@@ -81,7 +82,7 @@ export default function Header() {
             <Link href={"/"}>
               <h2 className="text-3xl font-medium">Bukapasar.</h2>
             </Link>
-            <FormField
+            <FormFieldButton
               classname="col-span-2"
               type="text"
               placeholder="Search Product Here..."

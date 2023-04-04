@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import React, { FormEvent, useState } from "react";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import {
@@ -8,15 +7,9 @@ import {
   AiFillGithub,
   AiFillYoutube,
 } from "react-icons/ai";
-import FormField from "../Global/FormField";
-import { ContactItemProps, RouteProps, MenuItemProps } from "@/types";
-
-const contactItem: ContactItemProps = [
-  "Malang",
-  "62264",
-  "+6285856196359",
-  "wahyu.budi.w.b33@gmail.com",
-];
+import { RouteProps, MenuItemProps } from "@/types";
+import FormFieldButton from "../Global/FormFieldButton";
+import { contactItems } from "@/data/contact";
 
 const socialMedia: MenuItemProps[] = [
   {
@@ -119,7 +112,7 @@ export default function Footer() {
               <IoPaperPlaneOutline className="w-6 h-6" />
               <p className="font-semibold">Sign Up For Newsletter</p>
             </div>
-            <FormField
+            <FormFieldButton
               type="text"
               placeholder="Your Email Address"
               handleChange={handleChange}
@@ -137,11 +130,11 @@ export default function Footer() {
               <h2 className="text-2xl font-semibold pb-3">Contact Us</h2>
               <div className="space-y-3">
                 <div>
-                  <p>Place: {contactItem[0]}</p>
-                  <p>Pincode: {contactItem[1]}</p>
+                  <p>Place: {contactItems[0].title}</p>
+                  <p>Pincode: {contactItems[1].title}</p>
                 </div>
-                <p>{contactItem[2]}</p>
-                <p>{contactItem[3]}</p>
+                <p>{contactItems[2].title}</p>
+                <p>{contactItems[3].title}</p>
                 <div className="flex items-center space-x-4">
                   {socialMedia.map((item: MenuItemProps, index: number) => {
                     return (

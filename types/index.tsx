@@ -34,13 +34,18 @@ export type FormFieldProps = {
   type?: string;
   placeholder?: string;
   value?: string;
+  name?: string;
   nameButton?: string;
   handleChange?: (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleSubmit?: (e: FormEvent<HTMLFormElement>) => void;
   iconButton?: IconType | any;
+  textarea?: boolean;
 };
 
-export type ContactItemProps = string[];
+export type ContactItemProps = {
+  title: string;
+  icon: IconType | any;
+};
 
 export type BannerProps = {
   header: string;
@@ -117,4 +122,30 @@ export type ProductProps = {
       ];
   createdAt: Date;
   updatedAt: Date;
+};
+
+export type BlogProps = {
+  _id: string;
+  title: string;
+  description: string;
+  category: string;
+  numViews: number;
+  isLiked: boolean;
+  isDisliked: boolean;
+  likes: string[];
+  dislikes: string[];
+  images:
+    | any
+    | [
+        {
+          url: string;
+          asset_id: string;
+          public_id: string;
+        }
+      ];
+  author: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  id: string;
 };
