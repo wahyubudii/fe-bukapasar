@@ -12,8 +12,8 @@ export default function Layout({ children, customMeta }: LayoutProps) {
         <meta name="description" content={customMeta?.description} />
         <link rel="shortcut icon" href={customMeta?.favicon} />
       </Head>
-      <div className="transition h-screen overflow-y-scroll scrollbar-hide duration-500 ease-in-out bg-gray-50 z-10">
-        <div className="min-h-screen flex flex-col">
+      <div className="transition h-screen overflow-y-scroll scrollbar-hide duration-500 ease-in-out bg-white z-10">
+        <div className="h-screen flex flex-col">
           <Header />
           <div className="flex-grow justify-center">{children}</div>
           <Footer />

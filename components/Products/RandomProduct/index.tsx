@@ -23,17 +23,22 @@ export default function RandomProduct({ products }: any) {
       />
       <div className="text-sm">
         <p className="font-medium line-clamp-2 text-sm group-hover:underline">
-          {product.title}
+          {product?.title}
         </p>
-        <ReactStars
-          half={true}
-          edit={false}
-          count={5}
-          value={product.ratings.length ? product.ratings[0].star : 0}
-          className="my-1"
-        />
+        <div className="py-2 flex items-center gap-3">
+          <ReactStars
+            half={true}
+            edit={false}
+            count={5}
+            value={product?.ratings.length ? product?.ratings[0].star : 0}
+            size={18}
+          />
+          <p className="font-medium text-xs">
+            ({product?.ratings.length ? product?.ratings[0].star : 0})
+          </p>
+        </div>
         <NumericFormat
-          value={product.price}
+          value={product?.price}
           displayType={"text"}
           thousandSeparator={true}
           prefix={"Rp. "}

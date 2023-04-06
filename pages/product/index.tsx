@@ -74,7 +74,7 @@ export default function Product() {
     },
   ];
 
-  const [products, setProducts] = useState<ProductProps[]>();
+  const [products, setProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -91,6 +91,8 @@ export default function Product() {
         if (response.ok) {
           const result = await response.json();
           setProducts(result);
+        } else {
+          setProducts([]);
         }
       } catch (err) {
         alert(err);
@@ -120,7 +122,7 @@ export default function Product() {
                 <div className="flex flex-col gap-3 items-start text-sm">
                   <p className="font-medium">Availlability</p>
                   <div className="flex items-center gap-3 text-xs text-gray-500">
-                    <input type="checkbox" id="checkbox-stock" />
+                    <input type="checkbox" id="checkbox-stock" value="" />
                     <label htmlFor="checkbox-stock">In Stock</label>
                   </div>
                   <div className="flex items-center gap-3 text-xs text-gray-500">
@@ -162,6 +164,7 @@ export default function Product() {
                     </div>
                   ) : (
                     <>
+                      <p>Lorem, ipsum.</p>
                       <RandomProduct products={products} />
                       <RandomProduct products={products} />
                     </>
@@ -216,7 +219,7 @@ export default function Product() {
                   </>
                 ) : (
                   <>
-                    {products?.map((item: ProductProps, index: number) => {
+                    {products.map((item: ProductProps, index: number) => {
                       return (
                         <div
                           key={index}
@@ -241,16 +244,26 @@ export default function Product() {
                             >
                               {item.title}
                             </Link>
-                            <ReactStars
-                              className="pt-1 pb-3"
-                              half={true}
-                              edit={false}
-                              count={5}
-                              value={
-                                item.ratings.length ? item.ratings[0].star : 0
-                              }
-                              size={20}
-                            />
+                            <div className="py-1.5 flex items-center gap-3">
+                              <ReactStars
+                                half={true}
+                                edit={false}
+                                count={5}
+                                value={
+                                  item?.ratings.length
+                                    ? item?.ratings[0].star
+                                    : 0
+                                }
+                                size={22}
+                              />
+                              <p className="font-medium text-sm">
+                                (
+                                {item?.ratings.length
+                                  ? item?.ratings[0].star
+                                  : 0}
+                                )
+                              </p>
+                            </div>
                             {true ? (
                               <>
                                 <div className="font-medium text-sm text-blue-700">

@@ -37,7 +37,7 @@ export default function BreadCrumbs() {
   }
 
   return (
-    <div className="flex items-center uppercase font-medium text-xs">
+    <div className="flex items-center uppercase text-sm text-gray-500w">
       <Link href="/" className="hover:text-blue-600 transition">
         Home
       </Link>
@@ -45,10 +45,7 @@ export default function BreadCrumbs() {
         return (
           <div key={index}>
             <span className="mx-3 after:content-['/']"></span>
-            <Link
-              href={breadcrumb.href}
-              className="hover:text-blue-600 transition"
-            >
+            <Link href={breadcrumb.href} className="hover:text-blue-600">
               {convertBreadcrumb(breadcrumb.breadcrumb)}
             </Link>
           </div>

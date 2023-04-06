@@ -36,7 +36,9 @@ export type FormFieldProps = {
   value?: string;
   name?: string;
   nameButton?: string;
-  handleChange?: (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleChange?: (
+    e: FormEvent<HTMLInputElement | HTMLTextAreaElement | any>
+  ) => void;
   handleSubmit?: (e: FormEvent<HTMLFormElement>) => void;
   iconButton?: IconType | any;
   textarea?: boolean;
@@ -101,27 +103,23 @@ export type ProductProps = {
   sold: number;
   images:
     | any
-    | [
-        {
-          url: string;
-          asset_id: string;
-          public_id: string;
-        }
-      ];
+    | {
+        url: string;
+        asset_id: string;
+        public_id: string;
+      }[];
   color: string;
-  totalRating: string;
   ratings:
     | any
-    | [
-        {
-          star: number;
-          comment: string;
-          postedby: string;
-          _id: string;
-        }
-      ];
-  createdAt: Date;
-  updatedAt: Date;
+    | {
+        star: number;
+        postedby: string;
+        _id?: string;
+        comment?: string;
+      }[];
+  totalRating: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
 };
 
 export type BlogProps = {
@@ -148,4 +146,33 @@ export type BlogProps = {
   updatedAt: string;
   __v: number;
   id: string;
+};
+
+export type FieldItemsProps = {
+  label: string;
+  name: string;
+  type: string;
+  value: string;
+  placeholder: string;
+  onChange: (e: FormEvent<HTMLInputElement>) => void;
+};
+
+export type LoginProps = {
+  email: string;
+  password: string;
+};
+
+export type RegisterProps = {
+  firstname: string;
+  lastname: string;
+  mobile: string;
+  email: string;
+  password: string;
+};
+
+export type ContactProps = {
+  name: string;
+  email: string;
+  phone: string;
+  comment: string;
 };

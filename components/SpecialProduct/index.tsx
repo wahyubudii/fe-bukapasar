@@ -140,14 +140,16 @@ export default function SpecialProduct() {
               >
                 {item.title}
               </Link>
-              <ReactStars
-                className="pt-1 pb-3"
-                half={true}
-                edit={false}
-                count={5}
-                value={item.rating}
-                size={20}
-              />
+              <div className="py-3 flex items-center gap-3">
+                <ReactStars
+                  half={true}
+                  edit={false}
+                  count={5}
+                  value={item.rating}
+                  size={20}
+                />
+                <p className="font-medium text-sm">({item.rating})</p>
+              </div>
               <div className="flex items-start gap-1.5 font-medium text-sm text-blue-700">
                 <div className="text-red-500">
                   Rp.{" "}

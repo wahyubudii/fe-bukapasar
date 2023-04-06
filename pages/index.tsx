@@ -32,25 +32,33 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="container mx-auto">
-        <div className="py-12">
-          <Brand />
+      <div className="bg-gray-50">
+        <div className="container mx-auto">
+          <div className="py-12">
+            <Brand />
+          </div>
         </div>
       </div>
-      <div className="container mx-auto">
-        <div className="py-12 space-y-5">
-          <Collection />
-          <SpecialProduct />
+      <div className="bg-gray-50">
+        <div className="container mx-auto">
+          <div className="py-12 space-y-5">
+            <Collection />
+            <SpecialProduct />
+          </div>
         </div>
       </div>
-      <div className="container mx-auto">
-        <div className="py-12 space-y-5">
-          <PopularProduct />
+      <div className="bg-gray-50">
+        <div className="container mx-auto">
+          <div className="py-12 space-y-5">
+            <PopularProduct />
+          </div>
         </div>
       </div>
-      <div className="container mx-auto">
-        <div className="py-12">
-          <Blog />
+      <div className="bg-gray-50">
+        <div className="container mx-auto">
+          <div className="py-12">
+            <Blog />
+          </div>
         </div>
       </div>
     </Layout>

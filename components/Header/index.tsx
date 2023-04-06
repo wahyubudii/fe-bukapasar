@@ -10,7 +10,6 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { MenuItemProps, RouteProps } from "@/types";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import FormField from "../Global/FormFieldButton";
 import ShopCategory from "@/public/images/menu.svg";
 import FormFieldButton from "../Global/FormFieldButton";
 
@@ -18,22 +17,22 @@ const menuItem: MenuItemProps[] = [
   {
     name: "Compare Products",
     icon: HiArrowPath,
-    route: "/",
+    route: "/compare-products",
   },
   {
     name: "Favourite Wishlist",
     icon: SlHeart,
-    route: "/",
+    route: "/wishlist",
   },
   {
     name: "Log in My Account",
     icon: BsPerson,
-    route: "/",
+    route: "/login",
   },
   {
     name: "My Cart sadsadas",
     icon: GiShoppingCart,
-    route: "/",
+    route: "/cart",
   },
 ];
 
@@ -97,9 +96,9 @@ export default function Header() {
                   <Link
                     key={index}
                     href={item.route}
-                    className="flex w-full items-center justify-evenly space-x-2"
+                    className="flex w-full items-center justify-evenly space-x-3"
                   >
-                    <div className="h-full flex items-center text-3xl">
+                    <div className="h-full flex items-center text-2xl">
                       <item.icon />
                     </div>
                     <p className="text-xs">{item.name}</p>

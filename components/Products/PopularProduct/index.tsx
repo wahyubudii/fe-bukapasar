@@ -162,14 +162,16 @@ export default function PopularProduct() {
                   >
                     {item.title}
                   </Link>
-                  <ReactStars
-                    className="pt-1 pb-3"
-                    half={true}
-                    edit={false}
-                    count={5}
-                    value={4.7}
-                    size={20}
-                  />
+                  <div className="py-3 flex items-center gap-3">
+                    <ReactStars
+                      half={true}
+                      edit={false}
+                      count={5}
+                      value={4.7}
+                      size={20}
+                    />
+                    <p className="font-medium text-sm">(4.7)</p>
+                  </div>
                   {item.discount ? (
                     <>
                       <div className="flex items-start gap-1.5 font-medium text-sm text-blue-700">

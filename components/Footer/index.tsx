@@ -107,10 +107,13 @@ export default function Footer() {
     <div className="divide-y divide-gray-600">
       <footer className="py-3 bg-black text-white">
         <div className="container mx-auto">
-          <div className="h-20 grid grid-cols-2 items-center">
-            <div className="flex items-center text-xl space-x-4">
+          <div className="h-20 grid grid-cols-2 gap-10 items-center">
+            <div className="flex items-center space-x-4">
               <IoPaperPlaneOutline className="w-6 h-6" />
-              <p className="font-semibold">Sign Up For Newsletter</p>
+              <p className="font-medium">
+                Mulai berlangganan newsletter dan dapatkan informasi dan promo
+                terbaru
+              </p>
             </div>
             <FormFieldButton
               type="text"
@@ -125,13 +128,13 @@ export default function Footer() {
       </footer>
       <footer className="py-5 bg-black text-white">
         <div className="container mx-auto">
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-4 gap-10 text-sm">
             <div>
-              <h2 className="text-2xl font-semibold pb-3">Contact Us</h2>
+              <h2 className="text-2xl font-semibold pb-6">Contact Us</h2>
               <div className="space-y-3">
                 <div>
                   <p>Place: {contactItems[0].title}</p>
-                  <p>Pincode: {contactItems[1].title}</p>
+                  <p>Phone Number: {contactItems[1].title}</p>
                 </div>
                 <p>{contactItems[2].title}</p>
                 <p>{contactItems[3].title}</p>
@@ -151,7 +154,7 @@ export default function Footer() {
               </div>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold pb-3">Information</h2>
+              <h2 className="text-2xl font-semibold pb-6">Information</h2>
               <div className="flex flex-col space-y-3">
                 {informationItem.map((item: RouteProps, index: number) => {
                   return (
@@ -163,7 +166,7 @@ export default function Footer() {
               </div>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold pb-3">Account</h2>
+              <h2 className="text-2xl font-semibold pb-6">Account</h2>
               <div className="flex flex-col space-y-3">
                 {accountItem.map((item: RouteProps, index: number) => {
                   return (
@@ -175,7 +178,7 @@ export default function Footer() {
               </div>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold pb-3">Quick Link</h2>
+              <h2 className="text-2xl font-semibold pb-6">Quick Link</h2>
               <div className="flex flex-col space-y-3">
                 {quickLink.map((item: RouteProps, index: number) => {
                   return (
@@ -191,7 +194,7 @@ export default function Footer() {
       </footer>
       <footer className="py-3 bg-black text-white">
         <div className="container mx-auto">
-          <div className="grid grid-cols-2 justify-between">
+          <div className="grid grid-cols-2 justify-between text-sm">
             <p>
               &copy; {new Date().getFullYear()} Powered by{" "}
               <Link href={"https://www.linkedin.com/in/wahyubudiutomo/"}>

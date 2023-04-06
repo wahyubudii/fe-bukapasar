@@ -23,7 +23,7 @@ const nextConfig = {
     return [
       {
         source: "/api/v1/:path*",
-        destination: "https://be-homeivas.vercel.app/api/:path*",
+        destination: "https://be-bukapasar.vercel.app/api/:path*",
       },
     ];
   },

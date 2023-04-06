@@ -13,7 +13,7 @@ export default function Blog() {
     type: "website",
   };
 
-  const [blogs, setBlogs] = useState<BlogProps[]>();
+  const [blogs, setBlogs] = useState<BlogProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -29,8 +29,9 @@ export default function Blog() {
 
         if (response.ok) {
           const result = await response.json();
-          console.log(result);
           setBlogs(result);
+        } else {
+          setBlogs([]);
         }
       } catch (err) {
         alert(err);

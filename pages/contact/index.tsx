@@ -2,11 +2,11 @@ import BreadCrumbs from "@/components/BreadCrumbs";
 import FormField from "@/components/Global/FormField";
 import Layout from "@/components/Global/Layout";
 import { contactItems } from "@/data/contact";
-import { ContactItemProps, MetaProps } from "@/types";
+import { ContactItemProps, ContactProps, MetaProps } from "@/types";
 import React, { FormEvent, useState } from "react";
 
 export default function Contact() {
-  const [fields, setFields] = useState<any>({
+  const [fields, setFields] = useState<ContactProps>({
     name: "",
     email: "",
     phone: "",
@@ -33,8 +33,8 @@ export default function Contact() {
     const subject = encodeURIComponent(
       "Bukapasar || Contact Request from " + fields.name
     );
-    const body = encodeURIComponent(fields.message);
-    const mailtoLink = `mailto:${fields.message}?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent(fields.comment);
+    const mailtoLink = `mailto:${fields.email}?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
     setFields({
       name: "",
@@ -100,11 +100,13 @@ export default function Contact() {
                       handleSubmit={handleSubmit}
                       textarea={true}
                     />
-                    <button type="submit" className="pt-5">
-                      <p className="py-3 px-6 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white font-medium">
-                        Submit
-                      </p>
-                    </button>
+                    <div className="pt-6">
+                      <button type="submit">
+                        <p className="py-3 px-6 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white font-medium">
+                          Submit
+                        </p>
+                      </button>
+                    </div>
                   </form>
                 </div>
                 <div className="space-y-5">
