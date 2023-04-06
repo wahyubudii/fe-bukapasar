@@ -111,7 +111,7 @@ export default function Login() {
                 </div>
                 <div className="flex items-center justify-between text-xs ">
                   <div className="flex items-center gap-1 text-gray-400">
-                    <p>Don't have an account?</p>
+                    <p>Don&apos;t have an account?</p>
                     <Link
                       href={"/register"}
                       className="text-blue-500 hover:underline"
