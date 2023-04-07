@@ -35,7 +35,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/user/register",
+        "https://bukapasar.vercel.app/api/v1/user/register",
         {
           method: "POST",
           headers: {

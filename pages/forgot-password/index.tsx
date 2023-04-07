@@ -25,7 +25,7 @@ export default function ResetPassword() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/user/forgot-password-token",
+        "https://bukapasar.vercel.app/v1/user/forgot-password-token",
         {
           method: "POST",
           headers: {
