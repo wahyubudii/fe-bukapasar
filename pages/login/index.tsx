@@ -31,15 +31,18 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://bukapasar.vercel.app/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...fields,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.URL_PRODUCTION}/api/v1/user/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...fields,
+          }),
+        }
+      );
 
       if (response.ok) {
         await response.json();

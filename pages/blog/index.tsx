@@ -21,10 +21,10 @@ export default function Blog() {
       setLoading(true);
       try {
         const response = await fetch(`https://bukapasar.vercel.app/api/v1/blog`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
         });
 
         if (response.ok) {

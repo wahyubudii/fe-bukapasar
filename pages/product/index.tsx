@@ -81,12 +81,15 @@ export default function Product() {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://bukapasar.vercel.app/api/v1/product`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_URL_PRODUCTION}/api/v1/product`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (response.ok) {
           const result = await response.json();
@@ -164,7 +167,6 @@ export default function Product() {
                     </div>
                   ) : (
                     <>
-                      <p>Lorem, ipsum.</p>
                       <RandomProduct products={products} />
                       <RandomProduct products={products} />
                     </>
