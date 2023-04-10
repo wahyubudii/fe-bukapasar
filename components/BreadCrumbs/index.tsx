@@ -37,7 +37,7 @@ export default function BreadCrumbs() {
   }
 
   return (
-    <div className="flex items-center uppercase text-sm text-gray-500w">
+    <div className="flex items-center uppercase text-sm text-gray-500">
       <Link href="/" className="hover:text-blue-600 transition">
         Home
       </Link>

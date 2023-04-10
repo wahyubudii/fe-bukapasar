@@ -10,7 +10,7 @@ export default function RandomProduct({ products }: any) {
 
   return (
     <Link
-      href={"/"}
+      href={`/product/${product._id}`}
       className="flex items-center gap-5 group first:border-b first:pb-3"
     >
       <Image

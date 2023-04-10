@@ -25,7 +25,7 @@ export default function ResetPassword() {
 
     try {
       const response = await fetch(
-        `${process.env.URL_PRODUCTION}/api/v1/user/forgot-password-token`,
+        `${process.env.NEXT_PUBLIC_URL_PRODUCTION}/api/v1/user/forgot-password-token`,
         {
           method: "POST",
           headers: {

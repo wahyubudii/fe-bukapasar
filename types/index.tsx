@@ -96,10 +96,10 @@ export type ProductProps = {
   title: string;
   slug: string;
   description: string;
-  price: number;
+  price: number | any;
   category: string;
   brand: string;
-  quantity: number;
+  quantity: number | any;
   sold: number;
   images:
     | any

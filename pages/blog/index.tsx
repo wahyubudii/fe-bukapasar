@@ -20,12 +20,15 @@ export default function Blog() {
     const fetchBlogs = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://bukapasar.vercel.app/api/v1/blog`, {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_URL_PRODUCTION}/api/v1/blog`,
+          {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
             },
-        });
+          }
+        );
 
         if (response.ok) {
           const result = await response.json();

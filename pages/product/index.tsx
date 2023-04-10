@@ -32,7 +32,7 @@ export default function Product() {
       name: "compare-icon",
     },
     {
-      route: "/",
+      route: "/product",
       icon: ViewIcon.src,
       name: "view-icon",
     },
@@ -241,7 +241,7 @@ export default function Product() {
                               {item.brand}
                             </p>
                             <Link
-                              href={`/product/${item.slug}`}
+                              href={`/product/${item._id}`}
                               className="pt-4 text-sm font-medium group-hover:underline line-clamp-2"
                             >
                               {item.title}
@@ -319,18 +319,18 @@ export default function Product() {
                           </button>
                           <div className="absolute top-12 -right-16 group-hover:right-4 group-hover:duration-300 flex flex-col space-y-2">
                             {productAction.map(
-                              (item: MenuItemProps, index: number) => {
+                              (menu: MenuItemProps, index: number) => {
                                 return (
                                   <Link
                                     key={index}
-                                    href={""}
+                                    href={menu.route + `/${item._id}`}
                                     className="hover:bg-blue-200 p-1 transition rounded-full"
                                   >
                                     <Image
                                       alt="view-icon"
                                       height={1200}
                                       width={1200}
-                                      src={item.icon}
+                                      src={menu.icon}
                                       className="w-4 h-4 text-white"
                                     />{" "}
                                   </Link>

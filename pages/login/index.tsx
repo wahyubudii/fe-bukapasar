@@ -32,7 +32,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        `${process.env.URL_PRODUCTION}/api/v1/user/login`,
+        `${process.env.NEXT_PUBLIC_URL_PRODUCTION}/api/v1/user/login`,
         {
           method: "POST",
           headers: {
