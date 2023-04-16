@@ -133,7 +133,8 @@ export default function DetailProduct() {
                       />
                     </div>
                     <p className="px-3 text-sm">
-                      400 <span className="text-gray-500">Penjualan</span>
+                      {product?.sold}{" "}
+                      <span className="text-gray-500">Penjualan</span>
                     </p>
                   </div>
                   <div className="py-2">

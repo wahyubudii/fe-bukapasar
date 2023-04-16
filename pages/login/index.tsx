@@ -1,10 +1,14 @@
-import BreadCrumbs from "@/components/BreadCrumbs";
 import FormField from "@/components/Global/FormField";
-import Layout from "@/components/Global/Layout";
+import { setLogin } from "@/redux/state/authState";
 import { FieldItemsProps, LoginProps, MetaProps } from "@/types";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
+import HeadMeta from "@/components/Global/Head";
 
 export default function Login() {
   const meta: MetaProps = {
@@ -17,6 +21,8 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.auth.user);
 
   const handleChange = (
     e: FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -45,7 +51,8 @@ export default function Login() {
       );
 
       if (response.ok) {
-        await response.json();
+        const result = await response.json();
+        dispatch(setLogin({ user: result.data, token: result.data.token }));
         alert("Login successful");
         router.push("/");
       } else {
@@ -67,7 +74,7 @@ export default function Login() {
       name: "email",
       type: "email",
       value: fields.email,
-      placeholder: "Input your email",
+      placeholder: "johndoe@gmail.com",
       onChange: handleChange,
     },
     {
@@ -75,65 +82,80 @@ export default function Login() {
       name: "password",
       type: "password",
       value: fields.password,
-      placeholder: "Input your password",
+      placeholder: "****************",
       onChange: handleChange,
     },
   ];
 
+  console.log(user);
+
   return (
-    <Layout customMeta={meta}>
-      <div className="bg-gray-50">
-        <div className="container mx-auto py-4">
-          <BreadCrumbs />
-          <div className="py-24 w-full flex justify-center">
-            <div className="px-8 pt-10 w-2/6 bg-white rounded-xl shadow">
-              <h2 className="font-medium text-xl">Login the account</h2>
-              <form onSubmit={handleSubmit} className="py-10 space-y-5">
-                {fieldItems.map((item: FieldItemsProps, index: number) => {
-                  return (
-                    <div key={index} className="space-y-1">
-                      <label htmlFor={item.name} className="text-sm">
-                        {item.label}
-                      </label>
-                      <FormField
-                        type={item.type}
-                        placeholder={item.placeholder}
-                        value={item.value}
-                        name={item.name}
-                        handleChange={item.onChange}
-                      />
-                    </div>
-                  );
-                })}
-                <div className="pt-6">
-                  <button type="submit" className="w-full">
-                    <p className="py-3 px-6 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white text-sm font-medium">
-                      Submit
-                    </p>
-                  </button>
+    <div className="relative bg-gray-100 z-0">
+      <HeadMeta customMeta={meta} />
+      <div className="container mx-auto h-screen flex items-center justify-center">
+        <div className="bg-white relative w-2/6 px-8 pt-10 rounded-xl shadow">
+          <Link
+            href={"/"}
+            className="absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-700 shadow-2xl text-white px-10 py-4 text-2xl font-medium -skew-x-12"
+          >
+            Bukapasar.
+          </Link>
+          <form onSubmit={handleSubmit} className="py-6 space-y-5 border-b">
+            {fieldItems.map((item: FieldItemsProps, index: number) => {
+              return (
+                <div key={index} className="space-y-1">
+                  <label htmlFor={item.name} className="text-sm">
+                    {item.label}
+                  </label>
+                  <FormField
+                    type={item.type}
+                    placeholder={item.placeholder}
+                    value={item.value}
+                    name={item.name}
+                    handleChange={item.onChange}
+                  />
                 </div>
-                <div className="flex items-center justify-between text-xs ">
-                  <div className="flex items-center gap-1 text-gray-400">
-                    <p>Don&apos;t have an account?</p>
-                    <Link
-                      href={"/register"}
-                      className="text-blue-500 hover:underline"
-                    >
-                      Register
-                    </Link>
-                  </div>
-                  <Link
-                    href={"/forgot-password"}
-                    className="text-gray-500 hover:underline"
-                  >
-                    Forgot Password
-                  </Link>
-                </div>
-              </form>
+              );
+            })}
+            <div className="pt-4 flex flex-col gap-4">
+              <Link
+                href={"/forgot-password"}
+                className="text-xs underline self-end"
+              >
+                Forgot Password
+              </Link>
+              <button type="submit" className="w-full">
+                <p className="py-3 px-6 bg-gray-700 hover:bg-gray-600 transition rounded-xl text-white font-medium">
+                  Log in
+                </p>
+              </button>
+              <div className="flex items-center gap-1 text-xs">
+                <p>Dont't have an account? </p>
+                <Link href={"/register"} className="text-blue-500 underline">
+                  Register now!
+                </Link>
+              </div>
             </div>
+          </form>
+          <div className="pt-5 pb-10 text-sm font-medium space-y-5">
+            <Link
+              href={"/"}
+              className="flex items-center justify-center gap-3 py-4 bg-white rounded-xl border hover:border-gray-800 transition duration-200"
+            >
+              <FcGoogle className="text-xl" />
+              <p>Sign in with Google</p>
+            </Link>
+            <Link
+              href={""}
+              className="flex items-center justify-center gap-3 py-4 bg-blue-600 text-white rounded-xl border hover:border-blue-800 transition duration-200"
+            >
+              <BsFacebook className="text-xl" />
+              <p>Sign in with Facebook</p>
+            </Link>
           </div>
         </div>
       </div>
-    </Layout>
+      <div className="absolute bottom-0 w-full h-[400px] bg-gray-700 -z-10"></div>
+    </div>
   );
 }

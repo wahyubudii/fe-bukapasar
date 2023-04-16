@@ -12,7 +12,7 @@ import PopularProduct from "@/components/Products/PopularProduct";
 
 export default function Home() {
   const meta: MetaProps = {
-    title: "Buka Pasar",
+    title: "Bukapasar: Best Deals Electronic Shop",
     favicon: `${Logo.src}`,
     type: "website",
   };

@@ -1,7 +1,7 @@
-import BreadCrumbs from "@/components/BreadCrumbs";
 import FormField from "@/components/Global/FormField";
-import Layout from "@/components/Global/Layout";
+import HeadMeta from "@/components/Global/Head";
 import { MetaProps } from "@/types";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState } from "react";
 
@@ -50,17 +50,21 @@ export default function ResetPassword() {
   };
 
   return (
-    <Layout customMeta={meta}>
-      <div className="bg-gray-50">
-        <div className="container mx-auto py-4">
-          <BreadCrumbs />
-        </div>
-        <div className="py-24 w-full flex justify-center items-cente">
-          <div className="px-8 py-10 w-2/6 bg-white shadow space-y-5 rounded-xl">
+    <div className="relative bg-gray-100 z-0">
+      <HeadMeta customMeta={meta} />
+      <div className="container mx-auto h-screen flex items-center justify-center">
+        <div className="bg-white relative w-1/3 px-10 pt-10 rounded-xl shadow">
+          <Link
+            href={"/"}
+            className="absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-700 shadow-2xl text-white px-10 py-4 text-2xl font-medium -skew-x-12"
+          >
+            Bukapasar.
+          </Link>
+          <div className="space-y-8 py-14">
             <div className="space-y-2">
-              <h2 className="font-medium text-xl">Forgot your password</h2>
-              <p className="text-xs text-gray-500">
-                We will send you an email to reset your password
+              <h2 className="text-xl font-medium">Forgot your password</h2>
+              <p className="text-gray-400 text-base font-thin">
+                Enter your email address and we will send the reset link
               </p>
             </div>
             <form onSubmit={handleSubmit}>
@@ -72,9 +76,9 @@ export default function ResetPassword() {
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
               />
-              <div className="pt-5">
+              <div className="pt-8">
                 <button type="submit" className="w-full">
-                  <p className="py-3 px-6 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white text-sm font-medium">
+                  <p className="py-3 px-6 bg-gray-700 hover:bg-gray-600 transition rounded-xl text-white font-medium">
                     Submit
                   </p>
                 </button>
@@ -83,6 +87,7 @@ export default function ResetPassword() {
           </div>
         </div>
       </div>
-    </Layout>
+      <div className="absolute bottom-0 w-full h-[400px] bg-gray-700 -z-10"></div>
+    </div>
   );
 }

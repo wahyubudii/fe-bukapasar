@@ -62,9 +62,10 @@ export type ServiceItemProps = {
 };
 
 export type CategoryItemProps = {
-  title: string;
-  items: number;
-  image: string;
+  title?: string;
+  items?: number;
+  image?: string | any;
+  route?: string | any;
 };
 
 export type BrandItemsProps = {
@@ -175,4 +176,69 @@ export type ContactProps = {
   email: string;
   phone: string;
   comment: string;
+};
+
+export type UserProps = {
+  _id: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  mobile: string;
+  token: string;
+};
+
+export type CartProductProps = {
+  product: {
+    _id: string;
+    title: string;
+    slug: string;
+    description: string;
+    price: number;
+    sold: number;
+    images: { url: string; asset_id: string; public_id: string }[];
+    ratings: { star: number; postedby: string; _id: string }[];
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+    brand: string;
+    category: string;
+    color: string;
+    quantity: number;
+    totalRating: string;
+  };
+  count: number;
+  color: string;
+  price: number;
+  _id: string;
+};
+
+export type CartItemProps = {
+  _id: string;
+  products: {
+    product: {
+      _id: string;
+      title: string;
+      slug: string;
+      description: string;
+      price: number;
+      sold: number;
+      images: { url: string; asset_id: string; public_id: string }[];
+      ratings: { star: number; postedby: string; _id: string }[];
+      createdAt: string;
+      updatedAt: string;
+      __v: number;
+      brand: string;
+      category: string;
+      color: string;
+      quantity: number;
+      totalRating: string;
+    };
+    count: number;
+    color: string;
+    price: number;
+    _id: string;
+  }[];
+  cartTotal: Number;
+  countTotal: Number;
+  orderBy: string;
 };
