@@ -87,8 +87,6 @@ export default function Login() {
     },
   ];
 
-  console.log(user);
-
   return (
     <div className="relative bg-gray-100 z-0">
       <HeadMeta customMeta={meta} />
@@ -130,7 +128,7 @@ export default function Login() {
                 </p>
               </button>
               <div className="flex items-center gap-1 text-xs">
-                <p>Dont't have an account? </p>
+                <p>Don&apos;t have an account? </p>
                 <Link href={"/register"} className="text-blue-500 underline">
                   Register now!
                 </Link>
