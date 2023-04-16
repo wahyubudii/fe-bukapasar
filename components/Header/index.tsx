@@ -27,6 +27,7 @@ import { setLogout } from "@/redux/state/authState";
 import { useDispatch } from "react-redux";
 import { NumericFormat } from "react-number-format";
 import { setCart, setRemoveCart } from "@/redux/state/userState";
+import { useRouter } from "next/router";
 
 const routePage: RouteProps[] = [
   {
@@ -120,6 +121,7 @@ const menuItem: MenuItemProps[] = [
 
 export default function Header() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const user = useSelector((state: any) => state.auth.user);
   const token = useSelector((state: any) => state.auth.token);
@@ -153,7 +155,7 @@ export default function Header() {
     } else {
       dispatch(setRemoveCart());
     }
-  }, []);
+  }, [cart]);
 
   const handleChange = (
     e: FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -167,6 +169,7 @@ export default function Header() {
 
   const handleLogout = () => {
     dispatch(setLogout());
+    router.push("/");
   };
 
   return (
