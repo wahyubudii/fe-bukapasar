@@ -7,60 +7,13 @@ import Link from "next/link";
 import { NumericFormat } from "react-number-format";
 import { CardProps, MenuItemProps } from "@/types";
 import DateTimeDisplay from "../Global/DateTimeDisplay";
-import ViewIcon from "@/public/images/view.svg";
-import CompareIcon from "@/public/images/prodcompare.svg";
 import CartIcon from "@/public/images/add-cart.svg";
+import { productAction, productSpecial } from "@/data/product";
 
 export default function SpecialProduct() {
-  const productAction: MenuItemProps[] = [
-    {
-      route: "/",
-      icon: CompareIcon.src,
-      name: "compare-icon",
-    },
-    {
-      route: "/",
-      icon: ViewIcon.src,
-      name: "view-icon",
-    },
-  ];
-
-  const specialProductItem: CardProps[] = [
-    {
-      route: "/",
-      imageLink: "/images/camera.jpg",
-      brand: "Canon",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      discount: 20,
-      isLiked: true,
-    },
-    {
-      route: "/",
-      imageLink: "/images/tab.jpg",
-      brand: "Samsung",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      discount: 35,
-      isLiked: true,
-    },
-    {
-      route: "/",
-      imageLink: "/images/watch.jpg",
-      brand: "Apple",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      discount: 15,
-      isLiked: false,
-    },
-  ];
-
   return (
     <div className="grid grid-cols-3 gap-5">
-      {specialProductItem.map((item: CardProps, index: number) => {
+      {productSpecial.map((item: CardProps, index: number) => {
         return (
           <div
             key={index}

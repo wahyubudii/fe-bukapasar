@@ -1,88 +1,16 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeartIcon from "@/public/images/wish.svg";
 import HeartFillIcon from "@/public/images/wish-black.svg";
 import ReactStars from "react-stars";
 import Link from "next/link";
 import { NumericFormat } from "react-number-format";
-import { CardProps, MenuItemProps } from "@/types";
-import ViewIcon from "@/public/images/view.svg";
-import CompareIcon from "@/public/images/prodcompare.svg";
+import { CardProps, CategoryItemProps, MenuItemProps } from "@/types";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { productAction, productPopular } from "@/data/product";
+import { popularCategory } from "@/data/Global/category";
 
 export default function PopularProduct() {
-  const productAction: MenuItemProps[] = [
-    {
-      route: "/",
-      icon: CompareIcon.src,
-      name: "compare-icon",
-    },
-    {
-      route: "/",
-      icon: ViewIcon.src,
-      name: "view-icon",
-    },
-  ];
-
-  const popularProductItems: CardProps[] = [
-    {
-      route: "/",
-      imageLink: "/images/camera.jpg",
-      brand: "Canon",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: false,
-    },
-    {
-      route: "/",
-      imageLink: "/images/tab.jpg",
-      brand: "Samsung",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      discount: 35,
-      isLiked: true,
-    },
-    {
-      route: "/",
-      imageLink: "/images/watch.jpg",
-      brand: "Apple",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: false,
-    },
-    {
-      route: "/",
-      imageLink: "/images/watch.jpg",
-      brand: "Apple",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: false,
-    },
-  ];
-
-  const tabCategories: MenuItemProps[] = [
-    {
-      name: "Laptops",
-      icon: "/images/laptop.jpg",
-    },
-    {
-      name: "Watchs",
-      icon: "/images/watch.jpg",
-    },
-    {
-      name: "Speakers",
-      icon: "/images/speaker.jpg",
-    },
-    {
-      name: "Cameras",
-      icon: "/images/camera.jpg",
-    },
-  ];
-
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
@@ -98,21 +26,21 @@ export default function PopularProduct() {
       </div>
       <div className="grid grid-cols-6 gap-5">
         <div className="bg-white shadow rounded-xl flex flex-col gap-2">
-          {tabCategories.map((item: MenuItemProps, index: number) => {
+          {popularCategory.map((item: CategoryItemProps, index: number) => {
             return (
               <button
                 key={index}
                 className="flex items-center px-4 py-2 space-x-2 group"
               >
                 <Image
-                  src={item.icon}
+                  src={item.image}
                   height={1200}
                   width={1200}
                   alt="tab-product"
                   className="w-14 h-14 bg-cover bg-center object-cover"
                 />
                 <p className="text-sm font-medium group-hover:underline">
-                  {item.name}
+                  {item.label}
                 </p>
               </button>
             );
@@ -138,7 +66,7 @@ export default function PopularProduct() {
           </div>
         </div>
         <div className="col-span-4 flex items-center gap-5">
-          {popularProductItems.map((item: CardProps, index: number) => {
+          {productPopular.map((item: CardProps, index: number) => {
             return (
               <div
                 key={index}

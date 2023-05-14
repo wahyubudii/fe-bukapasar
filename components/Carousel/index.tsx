@@ -4,27 +4,9 @@ import { RxDotFilled } from "react-icons/rx";
 import Image from "next/image";
 import Link from "next/link";
 import { BannerProps } from "@/types";
+import { carouselItem } from "@/data/banner";
 
 export default function Carousel() {
-  const carouselItem: BannerProps[] = [
-    {
-      header: "Supercharge for Pros.",
-      title: "iPad S13+ Pro.",
-      url: "/images/main-banner-1.jpg",
-    },
-    {
-      header: "Supercharge for Pros.",
-      title: "Macbook M2 Pro.",
-      url: "/images/main-banner.jpg",
-    },
-
-    {
-      header: "Supercharge for Pros.",
-      title: "iPhone 14 Pro.",
-      url: "/images/main-banner-1.jpg",
-    },
-  ];
-
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const prevSlide = () => {
@@ -59,7 +41,7 @@ export default function Carousel() {
           {carouselItem[currentIndex].header}
         </h3>
         <h1 className="py-4 text-4xl font-semibold">
-          {carouselItem[currentIndex].title}
+          {carouselItem[currentIndex].label}
         </h1>
         <div className="pb-8">
           <p>From Rp 14.599.000 or Rp. 1.217.000/mo.</p>

@@ -6,17 +6,17 @@ import Category from "@/components/Category";
 import Brand from "@/components/Brand";
 import Banner from "@/components/Banner";
 import Blog from "@/components/Blog";
-import Collection from "@/components/Collection";
+import Collection from "@/components/Products/CollectionProduct";
 import SpecialProduct from "@/components/SpecialProduct";
 import PopularProduct from "@/components/Products/PopularProduct";
 
-export default function Home() {
-  const meta: MetaProps = {
-    title: "Bukapasar: Best Deals Electronic Shop",
-    favicon: `${Logo.src}`,
-    type: "website",
-  };
+const meta: MetaProps = {
+  title: "Bukapasar: Best Deals Electronic Shop",
+  favicon: `${Logo.src}`,
+  type: "website",
+};
 
+export default function Home() {
   return (
     <Layout customMeta={meta}>
       <div className="container mx-auto">

@@ -6,6 +6,7 @@ import nProgress from "nprogress";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "../redux/store";
+import { SessionProvider } from "next-auth/react";
 
 nProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", nProgress.start);
@@ -16,7 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Component {...pageProps} />
+        <SessionProvider session={pageProps.session}>
+          <Component {...pageProps} />
+        </SessionProvider>
       </PersistGate>
     </Provider>
   );

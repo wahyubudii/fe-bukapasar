@@ -5,12 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState } from "react";
 
-export default function ResetPassword() {
-  const meta: MetaProps = {
-    title: "Reset Password | Buka Pasar",
-    type: "website",
-  };
+const meta: MetaProps = {
+  title: "Reset Password | Buka Pasar",
+  type: "website",
+};
 
+export default function ResetPassword() {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
 

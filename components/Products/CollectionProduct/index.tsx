@@ -4,89 +4,11 @@ import Link from "next/link";
 import ReactStars from "react-stars";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { NumericFormat } from "react-number-format";
-import ViewIcon from "@/public/images/view.svg";
-import CompareIcon from "@/public/images/prodcompare.svg";
-import CartIcon from "@/public/images/add-cart.svg";
 import HeartIcon from "@/public/images/wish.svg";
 import HeartFillIcon from "@/public/images/wish-black.svg";
+import { productAction, productCollection } from "@/data/product";
 
 export default function Collection() {
-  const collectionItem: CardProps[] = [
-    {
-      route: "/",
-      imageLink: "/images/camera.jpg",
-      brand: "Canon",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: false,
-    },
-    {
-      route: "/",
-      imageLink: "/images/tab.jpg",
-      brand: "Samsung",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      discount: 35,
-      isLiked: true,
-    },
-    {
-      route: "/",
-      imageLink: "/images/watch.jpg",
-      brand: "Apple",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: false,
-    },
-    {
-      route: "/",
-      imageLink: "/images/speaker.jpg",
-      brand: "JBL",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: true,
-    },
-    {
-      route: "/",
-      imageLink: "/images/acc.jpg",
-      brand: "Logitech",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: false,
-    },
-    {
-      route: "/",
-      imageLink: "/images/headphone.jpg",
-      brand: "Apple",
-      title: "Olympus Pen E-PL9 Kit With 14-42, EZ Lenz, Camera",
-      rating: 4.5,
-      price: 500000,
-      isLiked: false,
-    },
-  ];
-
-  const productAction: MenuItemProps[] = [
-    {
-      route: "/",
-      icon: CompareIcon.src,
-      name: "compare-icon",
-    },
-    {
-      route: "/",
-      icon: ViewIcon.src,
-      name: "view-icon",
-    },
-    {
-      route: "/",
-      icon: CartIcon.src,
-      name: "cart-icon",
-    },
-  ];
-
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
@@ -101,7 +23,7 @@ export default function Collection() {
         </div>
       </div>
       <div className="grid grid-cols-6 gap-5">
-        {collectionItem.map((item: CardProps, index: number) => {
+        {productCollection.map((item: CardProps, index: number) => {
           return (
             <div
               key={index}

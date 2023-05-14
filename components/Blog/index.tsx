@@ -3,43 +3,9 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { CardProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import { blogItems } from "@/data/blog";
 
 export default function Blog() {
-  const blogItems: CardProps[] = [
-    {
-      route: "/",
-      imageLink: "/images/blog-1.jpg",
-      time: "11 June, 2022",
-      title: "A Beautiful Sunday Morning Renaissance",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit, doloribus natus officia dolor eligendi fugiat!",
-    },
-    {
-      route: "/",
-      imageLink: "/images/blog-1.jpg",
-      time: "11 June, 2022",
-      title: "A Beautiful Sunday Morning Renaissance",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit, doloribus natus officia dolor eligendi fugiat!",
-    },
-    {
-      route: "/",
-      imageLink: "/images/blog-1.jpg",
-      time: "11 June, 2022",
-      title: "A Beautiful Sunday Morning Renaissance",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit, doloribus natus officia dolor eligendi fugiat!",
-    },
-    {
-      route: "/",
-      imageLink: "/images/blog-1.jpg",
-      time: "11 June, 2022",
-      title: "A Beautiful Sunday Morning Renaissance",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit, doloribus natus officia dolor eligendi fugiat!",
-    },
-  ];
-
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">

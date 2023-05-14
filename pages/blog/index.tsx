@@ -6,15 +6,19 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { formatDate } from "@/utils/formateDate";
 import BlogSkeleton from "@/components/Global/Skeleton/BlogSkeleton";
+import { categoryFilter } from "@/data/blog";
+
+const meta: MetaProps = {
+  title: "Blog | Buka Pasar",
+  type: "website",
+};
 
 export default function Blog() {
-  const meta: MetaProps = {
-    title: "Blog | Buka Pasar",
-    type: "website",
-  };
-
   const [blogs, setBlogs] = useState<BlogProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  // SELECTED CATEGORIES BLOGS
+  const [selectedCategory, setSelectedCategory] = useState<string>();
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -48,29 +52,42 @@ export default function Blog() {
     fetchBlogs();
   }, []);
 
+  const handleCategoryChange = (category: string) => {
+    if (selectedCategory === category) {
+      setSelectedCategory("");
+    } else {
+      setSelectedCategory(category);
+    }
+  };
+
   return (
     <Layout customMeta={meta}>
-      <div className="bg-white">
-        <div className="container mx-auto py-4">
-          <BreadCrumbs />
-        </div>
-      </div>
-      <div className="bg-gray-100">
-        <div className="container mx-auto py-4">
+      <div className="py-16">
+        <div className="container mx-auto">
           <div className="grid grid-cols-10 gap-5">
-            <div className="col-span-2">
-              <div className="rounded-xl p-5 shadow space-y-8 bg-white">
-                <h3 className="font-semibold">Filter By</h3>
-                <div className="flex flex-col gap-3 items-start text-sm">
-                  <p className="font-medium">Availlability</p>
-                  <div className="flex items-center gap-3 text-xs text-gray-500">
-                    <input type="checkbox" id="checkbox-stock" />
-                    <label htmlFor="checkbox-stock">In Stock</label>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-gray-500">
-                    <input type="checkbox" id="checkbox-out-stock" />
-                    <label htmlFor="checkbox-out-stock">Out of Stock</label>
-                  </div>
+            <div className="col-span-2 space-y-5 border-r border-gray-200 pr-4">
+              <h3 className="font-bold text-2xl">Filters</h3>
+              <div className="p-5 space-y-8">
+                <div className="flex flex-col gap-5 items-start">
+                  <p className="font-semibold text-lg">Category</p>
+                  {categoryFilter.map((item: any, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center gap-3 text-sm text-gray-700"
+                      >
+                        <input
+                          className="w-4 h-4"
+                          type="checkbox"
+                          id={item.id}
+                          value={item.id}
+                          checked={selectedCategory === item.id}
+                          onChange={() => handleCategoryChange(item.id)}
+                        />
+                        <label htmlFor={item.id}>{item.label}</label>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

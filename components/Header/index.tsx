@@ -11,113 +11,25 @@ import {
 } from "@/types";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import ShopCategory from "@/public/images/menu.svg";
 import FormFieldButton from "../Global/FormFieldButton";
 import { useSelector } from "react-redux";
 import {
-  AiOutlineHome,
   AiOutlineLogout,
   AiOutlineShoppingCart,
   AiOutlineSwap,
 } from "react-icons/ai";
 import DropdownHover from "../DropdownHover";
-import { FiHeart } from "react-icons/fi";
-import { BsPerson } from "react-icons/bs";
-import { setLogout } from "@/redux/state/authState";
+
 import { useDispatch } from "react-redux";
 import { NumericFormat } from "react-number-format";
 import { setCart, setRemoveCart } from "@/redux/state/userState";
 import { useRouter } from "next/router";
-
-const routePage: RouteProps[] = [
-  {
-    name: "Home",
-    route: "/",
-  },
-  {
-    name: "Our Store",
-    route: "/product",
-  },
-  {
-    name: "Blogs",
-    route: "/blog",
-  },
-  {
-    name: "Contacts",
-    route: "/contact",
-  },
-];
-
-const links: CategoryItemProps[] = [
-  {
-    title: "Computer & Laptop",
-    image: "/images/laptop.jpg",
-    route: "/",
-  },
-  {
-    title: "Camera & Videos",
-    image: "/images/camera.jpg",
-    route: "/",
-  },
-  {
-    title: "Smart Television",
-    image: "/images/tv.jpg",
-    route: "/",
-  },
-  {
-    title: "Smartwatches",
-    image: "/images/watch.jpg",
-    route: "/",
-  },
-  {
-    title: "Music & Gaming",
-    image: "/images/watch.jpg",
-    route: "/",
-  },
-  {
-    title: "Mobiles & Tablets",
-    image: "/images/tab.jpg",
-    route: "/",
-  },
-  {
-    title: "Headphones",
-    image: "/images/headphone.jpg",
-    route: "/",
-  },
-  {
-    title: "Accessories",
-    image: "/images/acc.jpg",
-    route: "/",
-  },
-  {
-    title: "Portable Speakers",
-    image: "/images/speaker.jpg",
-    route: "/",
-  },
-  {
-    title: "Home Appliances",
-    image: "/images/homeapp.jpg",
-    route: "/",
-  },
-];
-
-const menuItem: MenuItemProps[] = [
-  {
-    name: "Wishlist",
-    icon: FiHeart,
-    route: "/wishlist",
-  },
-  {
-    name: "Address",
-    icon: AiOutlineHome,
-    route: "/",
-  },
-  {
-    name: "Account",
-    icon: BsPerson,
-    route: "/",
-  },
-];
+import { signOut, useSession } from "next-auth/react";
+import { setLogout } from "@/redux/state/authState";
+import Cart from "@/public/images/cart/cart-8.svg";
+import { categoryProduct } from "@/data/Global/category";
+import { routePage } from "@/data/route";
+import { userMenu } from "@/data/userMenu";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -126,6 +38,9 @@ export default function Header() {
   const user = useSelector((state: any) => state.auth.user);
   const token = useSelector((state: any) => state.auth.token);
   const cart = useSelector((state: any) => state.user.cart);
+
+  // NEXT AUTH
+  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -147,6 +62,7 @@ export default function Header() {
         }
       } catch (err) {
         alert(err);
+        // console.info(err);
       }
     };
 
@@ -155,7 +71,7 @@ export default function Header() {
     } else {
       dispatch(setRemoveCart());
     }
-  }, [cart]);
+  }, []);
 
   const handleChange = (
     e: FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -169,16 +85,18 @@ export default function Header() {
 
   const handleLogout = () => {
     dispatch(setLogout());
+    dispatch(setRemoveCart());
+    signOut();
     router.push("/");
   };
 
   return (
-    <div className="divide-y divide-gray-700">
-      <div className="py-4 bg-black text-white">
+    <div className="">
+      <div className="py-4 bg-white text-black">
         <div className="container mx-auto">
           <div className="flex items-center justify-center">
             <Link href={"/"}>
-              <h2 className="text-2xl font-medium">Bukapasar.</h2>
+              <h2 className="text-2xl font-extrabold">Bukapasar.</h2>
             </Link>
             <FormFieldButton
               classname="flex-grow px-32"
@@ -191,7 +109,7 @@ export default function Header() {
             />
             <div className="flex items-center justify-end">
               <div className="flex items-center justify-center gap-8 pr-10">
-                {user && (
+                {(session || user) && (
                   <Link href={"/order"} className="text-2xl">
                     <AiOutlineSwap />
                   </Link>
@@ -205,22 +123,22 @@ export default function Header() {
                     <div className="py-3 px-4">
                       <div className="space-y-2 border-b pb-3">
                         {cart.products
-                          .slice(0, 3)
+                          .slice(0, 4)
                           .map((item: CartProductProps) => {
                             return (
                               <Link
                                 key={item._id}
                                 href={"/"}
-                                className="border rounded-xl flex items-center text-sm italic overflow-clip text-black"
+                                className="border rounded-xl flex items-center text-sm overflow-clip text-black"
                               >
                                 <Image
-                                  src={`${item.product.images[0].url}`}
+                                  src={`https://picsum.photos/200`}
                                   alt="cart-photo"
                                   height={800}
                                   width={1200}
                                   className="w-28 h-24 bg-gray-300 rounded bg-cover bg-center object-cover"
                                 />
-                                <div className="px-6 space-y-2 font-medium w-[450px]">
+                                <div className="px-6 space-y-2 font-bold w-[450px]">
                                   <p className="line-clamp-1">
                                     {item.product.title}
                                   </p>
@@ -235,13 +153,13 @@ export default function Header() {
                                   </p>
                                 </div>
                                 <p className="mr-7 min-w-max">
-                                  {item.count} pcs
+                                  {item.count} items
                                 </p>
                               </Link>
                             );
                           })}
                       </div>
-                      <div className="pt-3 flex items-center justify-between text-black text-sm font-thin">
+                      <div className="pt-3 flex items-center justify-between text-black text-sm">
                         <p>
                           Total Items:{" "}
                           <span className="font-medium">
@@ -261,24 +179,42 @@ export default function Header() {
                         </p>
                         <Link
                           href={"/cart"}
-                          className="text-blue-600 font-normal"
+                          className="text-blue-600 font-bold"
                         >
                           See More
                         </Link>
                       </div>
                     </div>
                   ) : (
-                    <div className="py-3 px-6 text-black w-max border text-sm flex flex-col items-center justify-center gap-5">
-                      <p>Kosong seperti hatimu 〜(￣▽￣〜)</p>
+                    <div className="py-6 px-6 text-black border border-gray-400 text-sm flex flex-col items-center justify-center gap-5 w-[400px]">
+                      {/* <p>Kosong seperti hatimu 〜(￣▽￣〜)</p> */}
+                      <Image
+                        src={Cart}
+                        alt="empty-cart"
+                        height={1200}
+                        width={800}
+                        draggable={false}
+                        className="w-48 bg-cover bg-center object-cover"
+                      />
+                      <p className="text-medium text-gray-400 text-sm w-56 text-center">
+                        Keranjang masih kosong, klik dibawah ini untuk mulai
+                        belanja!
+                      </p>
+                      <Link
+                        href={"/product"}
+                        className="rounded bg-blue-700 hover:bg-blue-600 transition px-6 py-3 text-white"
+                      >
+                        Mulai Belanja Sekarang
+                      </Link>
                     </div>
                   )}
                 </DropdownHover>
               </div>
-              <div className="flex justify-center gap-4 pl-3 border-l border-gray-600">
-                {user ? (
+              <div className="flex justify-center gap-4 pl-3 border-l border-gray-400">
+                {session || user ? (
                   <DropdownHover>
-                    <div className="w-56">
-                      {menuItem.map((val: MenuItemProps, index: number) => {
+                    <div className="w-56 border-2 border-gray-400">
+                      {userMenu.map((val: MenuItemProps, index: number) => {
                         return (
                           <Link
                             key={index}
@@ -286,16 +222,16 @@ export default function Header() {
                             className="py-4 px-6 text-gray-800 hover:bg-gray-100 hover:text-gray-900 flex items-center text-sm"
                           >
                             <val.icon className="mr-4 text-xl" />
-                            <p className="text-gray-400">{val.name}</p>
+                            <p className="">{val.name}</p>
                           </Link>
                         );
                       })}
                       <button
                         onClick={handleLogout}
-                        className="py-4 px-6 w-full text-gray-800 hover:bg-gray-100 hover:text-gray-900 flex items-center text-sm"
+                        className="w-full py-4 px-6 text-gray-800 hover:bg-gray-100 hover:text-gray-900 flex items-center text-sm"
                       >
                         <AiOutlineLogout className="mr-4 text-lg" />
-                        <p className="text-gray-400">Log out</p>
+                        <p>Log out</p>
                       </button>
                     </div>
                   </DropdownHover>
@@ -303,13 +239,13 @@ export default function Header() {
                   <>
                     <Link
                       href={"/login"}
-                      className="px-5 py-2 border-2 border-blue-600 text-center rounded-lg"
+                      className="px-5 py-2 border-2 border-blue-600 text-center font-semibold rounded-lg"
                     >
                       Masuk
                     </Link>
                     <Link
                       href={"/register"}
-                      className="px-5 py-2 bg-blue-600 text-center rounded-lg"
+                      className="px-5 py-2 bg-blue-600 text-center text-white font-semibold rounded-lg"
                     >
                       Daftar
                     </Link>
@@ -320,22 +256,12 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="py-3 bg-black text-white">
+      <div className="py-3 bg-white border-y-2 border-gray-200 text-black">
         <div className="container mx-auto">
-          <div className="flex items-center divide-x divide-gray-600">
+          <div className="flex items-center">
             <Menu as="div" className="relative w-1/5">
               <Menu.Button className="flex items-center justify-between w-full">
-                <div className="flex items-center space-x-3">
-                  <Image
-                    src={ShopCategory.src}
-                    alt="menu-icon"
-                    width={1200}
-                    height={1200}
-                    draggable={false}
-                    className="w-5 h-5 bg-cover bg-center object-cover"
-                  />
-                  <p className="text-sm">Shop Categories</p>
-                </div>
+                <p className="text-sm font-semibold">Shop Categories</p>
                 <TiArrowSortedDown />
               </Menu.Button>
               <Transition
@@ -347,24 +273,26 @@ export default function Header() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute mt-3 origin-top-right rounded-b-lg w-full bg-gray-900 z-10">
+                <Menu.Items className="absolute mt-3 origin-top-right rounded-b-lg w-full bg-white z-10 border border-gray-400 shadow-xl">
                   <div className="">
-                    {links.map((item: CategoryItemProps, index: number) => {
-                      return (
-                        <Menu.Item key={index}>
-                          {({ active }) => (
-                            <Link
-                              href={item.route}
-                              className={`${
-                                active ? "text-white/90" : "text-white"
-                              } group flex w-full items-center rounded-md p-4 text-xs`}
-                            >
-                              {item.title}
-                            </Link>
-                          )}
-                        </Menu.Item>
-                      );
-                    })}
+                    {categoryProduct.map(
+                      (item: CategoryItemProps, index: number) => {
+                        return (
+                          <Menu.Item key={index}>
+                            {({ active }) => (
+                              <Link
+                                href={`/product?categories=${item.route}`}
+                                className={`${
+                                  active ? "text-blue-700" : "text-black"
+                                } group flex w-full items-center rounded-md p-4 text-sm font-semibold`}
+                              >
+                                {item.label}
+                              </Link>
+                            )}
+                          </Menu.Item>
+                        );
+                      }
+                    )}
                   </div>
                 </Menu.Items>
               </Transition>
@@ -375,7 +303,7 @@ export default function Header() {
                   <Link
                     key={index}
                     href={item.route}
-                    className="px-5 text-sm hover:text-white/90"
+                    className="px-5 text-sm font-semibold hover:text-gray-700"
                   >
                     {item.name}
                   </Link>

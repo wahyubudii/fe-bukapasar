@@ -24,7 +24,7 @@ export default function FormFieldButton({
             value={value}
             onChange={handleChange}
             required
-            className="outline-none block p-2 w-full z-20 text-sm rounded-r-lg border-l-2 border bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+            className="outline-none block p-2 w-full z-20 text-sm rounded-r-lg border border-gray-300 bg-white placeholder-gray-400 text-black"
           />
           <button
             type="submit"

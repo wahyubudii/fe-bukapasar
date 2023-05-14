@@ -34,7 +34,7 @@ export type FormFieldProps = {
   type?: string;
   placeholder?: string;
   value?: string;
-  name?: string;
+  name?: string | any;
   nameButton?: string;
   handleChange?: (
     e: FormEvent<HTMLInputElement | HTMLTextAreaElement | any>
@@ -51,25 +51,25 @@ export type ContactItemProps = {
 
 export type BannerProps = {
   header: string;
-  title: string;
+  label: string;
   url: string;
 };
 
 export type ServiceItemProps = {
-  title: string;
+  label: string;
   subTitle: string;
   image: string;
 };
 
 export type CategoryItemProps = {
-  title?: string;
+  label?: string;
   items?: number;
   image?: string | any;
   route?: string | any;
 };
 
 export type BrandItemsProps = {
-  title: string;
+  label: string;
   image: string;
   route: string;
 };
@@ -149,13 +149,30 @@ export type BlogProps = {
   id: string;
 };
 
-export type FieldItemsProps = {
+export type LoginFieldProps = {
   label: string;
-  name: string;
+  name: keyof LoginProps;
   type: string;
-  value: string;
+  value?: string;
   placeholder: string;
-  onChange: (e: FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: FormEvent<HTMLInputElement>) => void;
+  validation?:
+    | {
+        required?: boolean;
+        minLength?: {
+          value: number;
+          message: string;
+        };
+        maxLength?: {
+          value: number;
+          message: string;
+        };
+        pattern?: {
+          value: string | RegExp;
+          message: string;
+        };
+      }
+    | any;
 };
 
 export type LoginProps = {
@@ -163,19 +180,72 @@ export type LoginProps = {
   password: string;
 };
 
+export type RegisterFieldProps = {
+  label: string;
+  name: keyof RegisterProps;
+  type: string;
+  value?: string;
+  placeholder: string;
+  onChange?: (e: FormEvent<HTMLInputElement>) => void;
+  validation?:
+    | {
+        required?: boolean;
+        minLength?: {
+          value: number;
+          message: string;
+        };
+        maxLength?: {
+          value: number;
+          message: string;
+        };
+        pattern?: {
+          value: string | RegExp;
+          message: string;
+        };
+      }
+    | any;
+};
+
 export type RegisterProps = {
-  firstname: string;
-  lastname: string;
-  mobile: string;
-  email: string;
-  password: string;
+  firstname?: string;
+  lastname?: string;
+  mobile?: string;
+  email?: string;
+  password?: string;
+  agreement?: boolean;
+};
+
+export type ContactFieldProps = {
+  label: string;
+  name: keyof ContactProps;
+  type: string;
+  value?: string;
+  placeholder: string;
+  onChange?: (e: FormEvent<HTMLInputElement>) => void;
+  validation?:
+    | {
+        required?: boolean;
+        minLength?: {
+          value: number;
+          message: string;
+        };
+        maxLength?: {
+          value: number;
+          message: string;
+        };
+        pattern?: {
+          value: string | RegExp;
+          message: string;
+        };
+      }
+    | any;
 };
 
 export type ContactProps = {
-  name: string;
-  email: string;
-  phone: string;
-  comment: string;
+  name?: string;
+  email?: string;
+  mobile?: string;
+  comment?: string;
 };
 
 export type UserProps = {
@@ -242,3 +312,17 @@ export type CartItemProps = {
   countTotal: Number;
   orderBy: string;
 };
+
+export type filterOption = {
+  id: number | string | any;
+  label: string;
+};
+
+// RESPONSE DATA API
+interface CategoriesData {
+  _id: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}

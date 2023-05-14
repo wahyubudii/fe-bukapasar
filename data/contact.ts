@@ -1,7 +1,6 @@
 import { ContactItemProps } from "@/types";
 import { IoHome } from "react-icons/io5";
 import { IoMdInformationCircle } from "react-icons/io";
-import { SiFaceit } from "react-icons/si";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
